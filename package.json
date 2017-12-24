@@ -1,0 +1,27 @@
+{
+  "name": "eshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DonVeds/eShop.git"
+  },
+  "author": "DonVeds",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DonVeds/eShop/issues"
+  },
+  "homepage": "https://github.com/DonVeds/eShop#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "pug": "^2.0.0-rc.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.3"
+  }
+}
