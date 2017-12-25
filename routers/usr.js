@@ -4,11 +4,11 @@ const users = require('../data/users.json');
 
 const router = Router();
 
-router.get('/usr', (req, res) => {
+router.get('/', (req, res) => {
   res.send('User page');
 });
 
-router.get('/usr/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   let user = users.find((user) => user.id == req.params.id);
 
   res.send(`User name is ${user.name}`);
