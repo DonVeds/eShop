@@ -2,15 +2,18 @@ const express =require('express');
 
 const mainRouter = require('./routers/main');
 const usrRouter = require('./routers/usr');
-const authRouter = require('./routers/auth');
+const adminRouter = require('./routers/admin');
 const loggerMiddleware = require('./middleware/logger');
+const authMiddleware = require('./middleware/auth');
 
 const server = express();
 
 server.use(loggerMiddleware);
 
-server.use(authRouter);
 server.use(mainRouter);
+server.use(adminRouter);
+
+server.use(authMiddleware);
 server.use(usrRouter);
 
 
