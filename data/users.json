@@ -2,15 +2,21 @@
 
   {
     "id": "1",
-    "name": "Kaneki"
+    "name": "Kaneki",
+    "login": "kaneki123",
+    "password": "password"
   },
   {
     "id": "2",
-    "name": "Lelouch"
+    "name": "Lelouch",
+    "login": "lel",
+    "password": "12345"
   },
   {
     "id": "3",
-    "name": "Ikari"
+    "name": "Ikari",
+    "login": "karik",
+    "password": "qwerty"
   }
 
 ]

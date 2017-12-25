@@ -1,8 +1,8 @@
-const express = require('express');
+const { Router } = require('express');
 
 const users = require('../data/users.json');
 
-const router = express.Router();
+const router = Router();
 
 router.get('/usr', (req, res) => {
   res.send('User page');
