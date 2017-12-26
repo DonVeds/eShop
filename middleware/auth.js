@@ -6,7 +6,8 @@ module.exports = (req, res, next) => {
   if (user) {
     next();
   } else {
-    res.redirect('/');
+    user = 'User';
+    next();
   }
 };
 
