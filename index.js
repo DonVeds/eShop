@@ -8,6 +8,8 @@ const authMiddleware = require('./middleware/auth');
 
 const server = express();
 
+server.set('view engine', 'pug');
+
 server.use(logger('dev'));
 
 server.use('/', mainRouter);
