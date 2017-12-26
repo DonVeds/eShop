@@ -5,7 +5,7 @@ const users = require('../data/users.json');
 const router = Router();
 
 router.get('/', (req, res) => {
-  res.send('User page');
+  res.send(`User is ${req.login}`);
 });
 
 router.get('/:id', (req, res) => {

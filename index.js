@@ -6,6 +6,7 @@ const usrRouter = require('./routers/usr');
 const adminRouter = require('./routers/admin');
 const authMiddleware = require('./middleware/auth');
 const buyRouter = require('./routers/buy');
+const sellRouter = require('./routers/sell');
 
 const server = express();
 
@@ -18,6 +19,7 @@ server.use('/', mainRouter);
 // server.use('/admin', adminRouter);
 server.use('/usr', usrRouter);
 server.use('/b', buyRouter);
+server.use('/s', sellRouter);
 
 
 const port = 3000;
