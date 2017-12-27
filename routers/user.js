@@ -5,13 +5,11 @@ const users = require('../data/users.json');
 const router = Router();
 
 router.get('/', (req, res) => {
-  res.send(`User is ${req.login}`);
+  res.render('user', { title: req.name, name: req.name, login: req.login, password: req.password });
 });
 
-router.get('/:id', (req, res) => {
-  let user = users.find((user) => user.id == req.params.id);
-
-  res.send(`User name is ${user.name}`);
+router.get('/cart', (req, res) => {
+  res.render('user/cart', { title: 'Cart', name: req.name, login: req.login, password: req.password });
 });
 
 module.exports = router;

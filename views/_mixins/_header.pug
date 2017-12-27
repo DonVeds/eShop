@@ -1,5 +1,5 @@
 mixin header
-  header.row.bg-warning.pt-2
+  header.row.pt-2
     .col
       if name
         p.text-center
@@ -10,11 +10,20 @@ mixin header
       h4.text-center= title
     .col
       p.text-center
-        a(href='/usr/cart').text-muted Cart
+        if login && password
+          a(href=`/user/cart?login=${login}&password=${password}`).text-muted Cart
+        else
+          a(href='/user/cart').text-muted Cart
   hr.m-0
-  .row.bg-warning.py-2
+  .row.py-2
     .col
-      h5.text-center eShop
+      if login && password
+        a(href=`/?login=${login}&password=${password}`).text-muted
+          h5.text-center eShop
+      else
+        a(href='/').text-muted
+          h5.text-center eShop
     .col-7
       input(type="search", name="").w-75
       button search
+  hr.m-0

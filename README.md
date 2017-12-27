@@ -10,7 +10,3 @@ ___
   3. git config user.email {your email} (like: git config user.email ivanov@example.com)
   4. npm i
   5. npm start
-* Make some changes and use terminal again
-  1. git add .
-  2. git commit -m "{commit_message}" (like: git commit -m "Add routes to UserPage")
-  3. git push origin master
