@@ -6,7 +6,5 @@ Simple prototype of online shop with Express, Pug and Bootstrap 4.
 ___
 * Init this rep by terminal: 
   1. git clone https://github.com/DonVeds/eShop.git
-  2. git config user.name {your name} (like: git config user.name IvanIvanov)
-  3. git config user.email {your email} (like: git config user.email ivanov@example.com)
-  4. npm i
-  5. npm start
+  2. npm i
+  3. npm start

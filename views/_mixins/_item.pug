@@ -1,0 +1,7 @@
+mixin item(title, imgSrc, desc)
+  .card.bg-info(style='width: 20rem;')
+    img.card-img-top(src=imgSrc, alt='Card image cap')
+    .card-block
+      h4.card-title= title
+      p.card-text= desc
+      a.btn.btn-primary(href='#') Go somewhere

@@ -3,3 +3,17 @@ include ./_mixins/_header
 
 block header
   +header
+
+block content
+  .row.px-5
+    .col-5
+      if login && password
+        a(href=`/b/?login=${login}&password=${password}` style="width: 100%").btn.btn-primary Buy 
+      else
+        a(href='/b' style="width: 100%").btn.btn-primary Buy 
+    .col-2
+    .col-5
+      if login && password
+        a(href=`/s/?login=${login}&password=${password}` style="width: 100%").btn.btn-info Sell 
+      else
+        a(href='/s' style="width: 100%").btn.btn-info Sell 
