@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "title": "Vinyl 1",
+    "desc": "Lorem ipsum",
+    "quantity": 31,
+    "category": "vinyl",
+    "img": "./img/vinyl_1.jpg" 
+  },
+  {
+    "id": 2,
+    "title": "Vinyl 2",
+    "desc": "Lorem ipsum",
+    "quantity": 32,
+    "category": "vinyl",
+    "img": "../../public/img/vinyl_2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Vinyl 3",
+    "desc": "Lorem ipsum",
+    "quantity": 33,
+    "category": "vinyl",
+    "img": "../../public/img/vinyl_3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Vinyl 4",
+    "desc": "Lorem ipsum",
+    "quantity": 34,
+    "category": "vinyl",
+    "img": "../../public/img/vinyl_4.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Vinyl 5",
+    "desc": "Lorem ipsum",
+    "quantity": 35,
+    "category": "vinyl",
+    "img": "../../public/img/vinyl_5.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Vinyl 6",
+    "desc": "Lorem ipsum",
+    "quantity": 36,
+    "category": "vinyl",
+    "img": "../../public/img/vinyl_6.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Vinyl 7",
+    "desc": "Lorem ipsum",
+    "quantity": 37,
+    "category": "vinyl",
+    "img": "../../public/img/vinyl_7.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Vinyl 8",
+    "desc": "Lorem ipsum",
+    "quantity": 38,
+    "category": "vinyl",
+    "img": "../../public/img/vinyl_8.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Vinyl 9",
+    "desc": "Lorem ipsum",
+    "quantity": 39,
+    "category": "vinyl",
+    "img": "../../public/img/vinyl_9.jpg"
+  }
+]

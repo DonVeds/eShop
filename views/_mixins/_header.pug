@@ -5,7 +5,8 @@ mixin header
         p.text-center
           a(href=`/user?login=${login}&password=${password}`).text-muted= `Hello ${name}`
       else
-        p.text-center= 'Login please'
+        p.text-center
+          a(href='/user/login') Login please
     .col-6
       h4.text-center= title
     .col

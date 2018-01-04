@@ -12,4 +12,8 @@ router.get('/cart', (req, res) => {
   res.render('user/cart', { title: 'Cart', name: req.name, login: req.login, password: req.password });
 });
 
+router.get('/login', (req, res) => {
+  res.render('user/login', { title: 'Login' })
+})
+
 module.exports = router;
