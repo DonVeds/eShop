@@ -1,13 +1,16 @@
 extends ../_layout
 include ../_mixins/_header
 include ../_mixins/_item
+include ../_mixins/nav
 
 block header
   +header
 
-block content 
+block content
+  +nav
+
   .content(style="display: flex; flex-wrap: wrap;")
     for item in items
-      +item(item.title, item.img, item.desc)
+      +item(item.title, item.img, item.desc, item.topic, item.year, item.top)
     
   

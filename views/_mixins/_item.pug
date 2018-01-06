@@ -1,7 +1,12 @@
-mixin item(title, imgSrc, desc)
-  .card.bg-info.m-2(style='width: 20rem;')
-    img.card-img-top(src=imgSrc, alt='Card image cap')
+mixin item(title, imgSrc, desc, topic, year, top)
+  .card.m-2.bg-light(style='width: 20rem;')
+    img.card-img-top(src=imgSrc, alt='Card image cap', style='width: 100%')
     .card-block
       h4.card-title= title
       p.card-text= desc
-      a.btn.btn-primary(href='#') Go somewhere
+      .card-body
+        button(type='button').btn.btn-success.m-2 Buy
+        button(type='button').btn.btn-primary.m-2 Cart
+        button(type='button').btn.btn-warning.m-2 Wishlist
+      .card-footer
+        small.text-muted= `${year} || ${topic}`
