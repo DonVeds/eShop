@@ -1,10 +1,10 @@
 mixin nav() 
-  ul.nav
+  ul.nav.nav-pills
     li.nav-item
-      a.nav-link.active(href='/b') Topics
+      a.nav-link(href='/b' class={ 'active': isTopic }) Topics
     li.nav-item
-      a.nav-link(href='/b/new') New
+      a.nav-link(href='/b/new' class={ 'active': isNew }) New
     li.nav-item
-      a.nav-link(href='/b/top') Top
+      a.nav-link(href='/b/top' class={ 'active': isTop }) Top
     li.nav-item
-      a.nav-link(href='/b/sale') Sale
+      a.nav-link(href='/b/sale' class={ 'active': isSale }) Sale

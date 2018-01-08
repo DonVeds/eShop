@@ -5,9 +5,10 @@
     "desc": "Lorem ipsum",
     "quantity": 31,
     "topic": "Love",
-    "img": "../img/vinyl_1.jpg",
+    "img": "/img/vinyl_1.jpg",
     "top": false,
-    "year": 1970 
+    "year": 1970,
+    "sale": true 
   },
   {
     "id": 2,
@@ -15,9 +16,10 @@
     "desc": "Lorem ipsum",
     "quantity": 32,
     "topic": "Star Wars",
-    "img": "../img/vinyl_2.jpg",
-    "top": false,
-    "year": 1982
+    "img": "/img/vinyl_2.jpg",
+    "top": true,
+    "year": 1982,
+    "sale": false
   },
   {
     "id": 3,
@@ -25,9 +27,10 @@
     "desc": "Lorem ipsum",
     "quantity": 33,
     "topic": "Love",
-    "img": "../img/vinyl_3.jpg",
+    "img": "/img/vinyl_3.jpg",
     "top": false,
-    "year": 1972
+    "year": 1972,
+    "sale": false
   },
   {
     "id": 4,
@@ -35,9 +38,10 @@
     "desc": "Lorem ipsum",
     "quantity": 34,
     "topic": "Love",
-    "img": "../img/vinyl_4.jpg",
+    "img": "/img/vinyl_4.jpg",
     "top": false,
-    "year": 1968
+    "year": 1968,
+    "sale": false
   },
   {
     "id": 5,
@@ -45,9 +49,10 @@
     "desc": "Lorem ipsum",
     "quantity": 35,
     "topic": "Love",
-    "img": "../img/vinyl_5.jpg",
+    "img": "/img/vinyl_5.jpg",
     "top": false,
-    "year": 1950
+    "year": 1950,
+    "sale": false
   },
   {
     "id": 6,
@@ -55,9 +60,10 @@
     "desc": "Lorem ipsum",
     "quantity": 36,
     "topic": "Love",
-    "img": "../img/vinyl_6.jpg",
+    "img": "/img/vinyl_6.jpg",
     "top": false,
-    "year": 2000
+    "year": 2000,
+    "sale": true
   },
   {
     "id": 7,
@@ -65,9 +71,10 @@
     "desc": "Lorem ipsum",
     "quantity": 37,
     "topic": "Star Wars",
-    "img": "../img/vinyl_7.jpg",
+    "img": "/img/vinyl_7.jpg",
     "top": false,
-    "year": 1959
+    "year": 1959,
+    "sale": false
   },
   {
     "id": 8,
@@ -75,9 +82,10 @@
     "desc": "Lorem ipsum",
     "quantity": 38,
     "topic": "Love",
-    "img": "../img/vinyl_8.jpg",
+    "img": "/img/vinyl_8.jpg",
     "top": false,
-    "year": 1970
+    "year": 1970,
+    "sale": false
   },
   {
     "id": 9,
@@ -85,8 +93,9 @@
     "desc": "Lorem ipsum",
     "quantity": 39,
     "topic": "Meditation",
-    "img": "../img/vinyl_9.jpg",
-    "top": false,
-    "year": 1970
+    "img": "/img/vinyl_9.jpg",
+    "top": true,
+    "year": 1970,
+    "sale": true
   }
 ]

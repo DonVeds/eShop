@@ -1,0 +1,4 @@
+mixin topicCard(topic)
+  .card.m-2(style='width: 10em')
+    .card-body.text-center
+      a(href=`/b/topics/${ topic.toLowerCase().replace(' ', '') }`)= topic

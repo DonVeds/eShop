@@ -2,12 +2,16 @@ extends ../_layout
 include ../_mixins/_header
 include ../_mixins/_item
 include ../_mixins/nav
+include ../_mixins/_topicCard
+
 
 block header
   +header
 
 block content
   +nav
+
+  hr
 
   .content(style="display: flex; flex-wrap: wrap;")
     for item in items
