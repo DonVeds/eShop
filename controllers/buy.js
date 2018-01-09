@@ -2,13 +2,13 @@ const items = require('../data/items.json');
 
 module.exports = {
 
-  // GET /b
+  // GET /buy
   redirectTopics(req, res) {
-    res.redirect('/b/topics')
+    res.redirect('/buy/topics')
   },
 
 
-  // GET /b/topics 
+  // GET /buy/topics 
   showTopics(req, res) {
     let topics = [];
     for (item of items) {
@@ -28,7 +28,7 @@ module.exports = {
   },
 
 
-  // GET /b/topics/:topic
+  // GET /buy/topics/:topic
   showItemsByTopic(req, res) {
     let topics = [];
     for (item of items) {
@@ -54,7 +54,7 @@ module.exports = {
 
 
 
-  // GET /b/new
+  // GET /buy/new
   showNew(req, res) {
     newItems = [...items].sort((current, next) => next.year - current.year);
 
@@ -68,7 +68,7 @@ module.exports = {
     });
   },
 
-  // GET /b/top
+  // GET /buy/top
   showTop(req, res) {
     let topItems = items.filter(item => item.top);
 
@@ -82,7 +82,7 @@ module.exports = {
     });
   },
 
-  // GET /b/sale 
+  // GET /buy/sale 
   showSale(req, res) {
     let saleItems = items.filter(item => item.sale);
 
@@ -97,7 +97,7 @@ module.exports = {
   },
 
 
-  // GET /b/:item
+  // GET /buy/:item
   showItem(req, res) {
     for (item of items) {
       if (req.params.item.toLowerCase().replace(' ', '') === item.title.toLowerCase().replace(' ', '')) {

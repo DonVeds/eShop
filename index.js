@@ -21,7 +21,7 @@ server.use(authMiddleware);
 server.use('/', router.main);
 server.use('/admin', router.admin);
 server.use('/user', router.user);
-server.use('/b', router.buy);
-server.use('/s', router.sell);
+server.use('/buy', router.buy);
+server.use('/sell', router.sell);
 
 server.listen(config.port, () => console.log(`Server is working on localhost:${config.port}`));
