@@ -9,5 +9,9 @@ module.exports = {
     views: path.resolve(__dirname, '..', 'views'),
     public: path.resolve(__dirname, '..', 'public'),
     lib: path.resolve(__dirname, '..', 'node_modules'),
+  },
+  admin: {
+    login: "admin",
+    password: 123 
   }
 };

@@ -1,9 +1,11 @@
 const { Router } = require('express');
-
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Main Page', name: req.name, login: req.login, password: req.password });
-});
+const { main: {
+  showMainPage
+} } = require('../controllers')
+
+
+router.get('/', showMainPage);
 
 module.exports = router;
