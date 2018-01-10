@@ -5,7 +5,7 @@ const { sell: {
   showSellingPage
 } } = require('../controllers');
 
-router.get('/', showSellingPage)
+// router.get('/', showSellingPage)
 // |||||
 // ERROR
 
