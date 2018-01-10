@@ -9,4 +9,4 @@ for (let file of files) {
     let name = path.basename(file, '.js');
     module.exports[name] = require(`./${file}`)
   }
-}
+} 
