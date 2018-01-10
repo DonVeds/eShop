@@ -4,8 +4,8 @@ include ../_mixins/_header
 block header
   +header
 
-block content
-  form.m-2
+block content 
+  form
     .form-group
       label(for='exampleInputEmail1') Email address
       input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
@@ -17,4 +17,3 @@ block content
       input#exampleCheck1.form-check-input.ml-1(type='checkbox')
       label.form-check-label(for='exampleCheck1') Check me out
     button.btn.btn-primary(type='submit') Submit
-    a.btn.btn-primary.ml-2(href="/user/reg") Go to registration

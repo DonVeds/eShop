@@ -22,13 +22,17 @@ module.exports = {
     })
   },
 
-  //GET / user/cart
+  //GET /user/login
   showLoginPage(req, res){
     res.render('user/login', {
-      title: 'Login page',
-      name: req.name,
-      login: req.login,
-      password: req.password     
+      title: 'Login page',    
+    })
+  },
+
+  // GIT /user/reg
+  showRegPage(req, res){
+    res.render('user/reg', {
+      title: 'Registration page',
     })
   }
 }
