@@ -1,4 +1,5 @@
-const items = require('../data/items.json');
+const { connect, ObjectID } = require('../services/db');
+const items = require('../data/items.json')
 
 module.exports = {
 
@@ -10,21 +11,27 @@ module.exports = {
 
   // GET /buy/topics 
   showTopics(req, res) {
-    let topics = [];
-    for (item of items) {
-      if ( topics.indexOf(item.topic) == -1 ) {
-        topics.push(item.topic)
-      }
-    }
-    res.render('buy/topics', {
-      items: items,
-      title: 'Topics',
-      name: req.name,
-      login: req.login,
-      password: req.password,
-      isTopic: true,
-      topics: topics
-    });
+    connect().then(collection => {
+      collection.find().toArray()
+        .then(items => {
+          let topics = [];
+          for (item of items) {
+            if (topics.indexOf(item.topic) == -1) {
+              topics.push(item.topic)
+            }
+          }
+          res.render('buy/topics', {
+            items: items,
+            title: 'Topics',
+            name: req.name,
+            login: req.login,
+            password: req.password,
+            isTopic: true,
+            topics: topics
+          });
+        })
+    })
+
   },
 
 
