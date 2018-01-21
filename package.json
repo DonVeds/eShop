@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/DonVeds/eShop#readme",
   "dependencies": {
+    "connect-mongo": "^2.0.1",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "mongodb": "^3.0.1",
+    "mongoose": "^5.0.0",
     "morgan": "^1.9.0",
     "pug": "^2.0.0-rc.4"
   },

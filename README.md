@@ -1,6 +1,6 @@
 # eShop - CodeDojo project
 ___
-Simple prototype of online shop with Express, Pug and Bootstrap 4.
+Simple prototype of online shop with Express, MongoDB, Mongoose, Pug and Bootstrap 4.
 
 ## How to start
 ___

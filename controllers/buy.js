@@ -1,7 +1,24 @@
-const { connect, ObjectID } = require('../services/db');
-const items = require('../data/items.json')
+const { Item } = require('../models');
+const { ObjectId } = require('mongodb')
+// const items = require('../data/items.json')
 
 module.exports = {
+
+  findTopics(req, res, next){
+    Item.find()
+      .then(items => {
+        let topics = [];
+        for (item of items) {
+          if (topics.indexOf(item.topic) == -1) {
+            topics.push(item.topic)
+          }
+        }
+        console.log(topics)
+        req.topics = topics;
+        next()
+      })
+      .catch(next)
+  },
 
   // GET /buy
   redirectTopics(req, res) {
@@ -11,41 +28,28 @@ module.exports = {
 
   // GET /buy/topics 
   showTopics(req, res) {
-    connect().then(collection => {
-      collection.find().toArray()
-        .then(items => {
-          let topics = [];
-          for (item of items) {
-            if (topics.indexOf(item.topic) == -1) {
-              topics.push(item.topic)
-            }
-          }
-          res.render('buy/topics', {
-            items: items,
-            title: 'Topics',
-            name: req.name,
-            login: req.login,
-            password: req.password,
-            isTopic: true,
-            topics: topics
-          });
+    Item.find()
+      .then(items => {
+        res.render('buy/topics', {
+          items: items,
+          title: 'Topics',
+          name: req.name,
+          login: req.login,
+          password: req.password,
+          isTopic: true,
+          topics: req.topics
         });
-    });
+      })
+      .catch(next)
+      
 
   },
 
 
   // GET /buy/topics/:topic
   showItemsByTopic(req, res) {
-    connect().then(collection => {
-      collection.find().toArray()
+    Item.find()
         .then(items => {
-          let topics = [];
-          for (item of items) {
-            if (topics.indexOf(item.topic) == -1) {
-              topics.push(item.topic)
-            }
-          }
 
           let itemsByTopic = items.filter(item => item.topic.toLowerCase().replace(' ', '') == req.params.topic)
 
@@ -58,18 +62,16 @@ module.exports = {
             login: req.login,
             password: req.password,
             isTopic: true,
-            topics: topics
+            topics: req.topics
           });
         });
-    });
   },
 
 
 
   // GET /buy/new
   showNew(req, res) {
-    connect().then(collection => {
-      collection.find().toArray()
+    Item.find()
         .then(items => {
           newItems = [...items].sort((current, next) => next.year - current.year);
 
@@ -82,18 +84,15 @@ module.exports = {
             isNew: true
           });
         });
-    });
   },
 
   // GET /buy/top
   showTop(req, res) {
-    connect().then(collection => {
-      collection.find().toArray()
+    Item.find({ top: true })
         .then(items => {
-          let topItems = items.filter(item => item.top);
 
           res.render('buy', {
-            items: topItems,
+            items: items,
             title: 'Top',
             name: req.name,
             login: req.login,
@@ -101,18 +100,15 @@ module.exports = {
             isTop: true
           });
         });
-    });
   },
 
   // GET /buy/sale 
   showSale(req, res) {
-    connect().then(collection => {
-      collection.find().toArray()
+    Item.find({ sale: true })
         .then(items => {
-          let saleItems = items.filter(item => item.sale);
 
           res.render('buy', {
-            items: saleItems,
+            items: items,
             title: 'Sale',
             name: req.name,
             login: req.login,
@@ -120,14 +116,12 @@ module.exports = {
             isSale: true,
           });
         });
-    });
   },
 
 
   // GET /buy/:item
   showItem(req, res) {
-    connect().then(collection => {
-      collection.find().toArray()
+    Item.find()
         .then(items => {
           for (item of items) {
             if (req.params.item.toLowerCase().replace(' ', '') === item.title.toLowerCase().replace(' ', '')) {
@@ -144,7 +138,6 @@ module.exports = {
             password: req.password,
           });
         });
-    });
   }
 
 }

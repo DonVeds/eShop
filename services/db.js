@@ -1,21 +1,19 @@
-const { MongoClient, ObjectID } = require('mongodb');
+const mongoose = require('mongoose');
+const config = require('../config');
 
-const connect = MongoClient.connect('mongodb://localhost:27017');
+mongoose.Promise = global.Promise;
 
-const db = {
-  connect() {
-    return connect.then(client => client.db('eShop').collection('items'));
-  },
-  
-  close() {
-    return connect.then(client => client.close());
-  },
+mongoose.connect(config.mongodbUrl);
 
-  ObjectID
-};
+mongoose.connection.on('error', () => console.error.bind(console, 'Mongoose error: '));
+mongoose.connection.on('open', () => console.log('Mongoose is workingn'));
+mongoose.connection.on('disconnected', () => console.log('Mongoose disconnected'));
 
 process.on('SIGINT', () => {
-  db.close.then(() => process.exit(0));
+  mongoose.connection.close(() => {
+    console.log('Mongoose disconnected throught app termination');
+    process.exit(0);
+  })
 });
 
-module.exports = db;
+module.exports = { connection: mongoose.connection }
