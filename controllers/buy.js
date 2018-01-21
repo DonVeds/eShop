@@ -1,6 +1,5 @@
 const { Item } = require('../models');
 const { ObjectId } = require('mongodb')
-// const items = require('../data/items.json')
 
 module.exports = {
 
@@ -40,7 +39,7 @@ module.exports = {
           topics: req.topics
         });
       })
-      .catch(next)
+      .catch()
       
 
   },

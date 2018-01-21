@@ -15,6 +15,6 @@ module.exports = {
     login: "admin",
     password: 123 
   }, 
-  mongodbUrl:'mongodb://<dbuser>:<dbpassword>@ds046677.mlab.com:46677/eshop',
+  mongodbUrl:'mongodb://admin:FKy-JGu-rc3-yWq@ds046677.mlab.com:46677/eshop',
   mongodb: 'mongodb://localhost:27017/eShop'
 };
