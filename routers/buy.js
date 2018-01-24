@@ -9,7 +9,9 @@ const { buy: {
   showNew,
   showTop,
   showSale,
-  showItem,
+  showSecondHand,
+  showItem
+  
 } } = require('../controllers');
 
 router.get('/', redirectTopics);
@@ -18,6 +20,7 @@ router.get('/topics/:topic', findTopics, showItemsByTopic)
 router.get('/new', showNew);
 router.get('/top', showTop);
 router.get('/sale', showSale);
+router.get('/secondhand', showSecondHand)
 router.get('/:item', showItem);
 
 module.exports = router;

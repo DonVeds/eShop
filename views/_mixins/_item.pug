@@ -1,4 +1,4 @@
-mixin item(title, imgSrc, desc, topic, year, top)
+mixin item(title, imgSrc, desc, topic, year, top, quantity)
   .card.m-2.bg-light(style='width: 20rem;')
     img.card-img-top(src=imgSrc, alt='Card image cap', style='width: 100%')
     .card-block
@@ -9,4 +9,4 @@ mixin item(title, imgSrc, desc, topic, year, top)
         button(type='button').btn.btn-primary.m-2 Cart
         button(type='button').btn.btn-warning.m-2 Wishlist
       .card-footer
-        small.text-muted= `${year} || ${topic}`
+        small.text-muted= `${year} || ${topic} || ${quantity}`

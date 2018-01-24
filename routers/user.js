@@ -2,13 +2,15 @@ const { Router } = require('express');
 const router = Router();
 
 const { user: {
-  showUserPage,
+  redirectUser,
+  showUserProfile,
   showUserCart,
   showLoginPage,
   showRegPage
 } } = require('../controllers')
 
-router.get('/', showUserPage);
+router.get('/', redirectUser);
+router.get('/profile', showUserProfile)
 router.get('/cart', showUserCart);
 router.get('/login', showLoginPage);
 router.get('/reg', showRegPage);

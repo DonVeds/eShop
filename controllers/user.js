@@ -2,10 +2,14 @@ const users = require('../data/users.json');
 
 module.exports = {
   
+  redirectUser(req, res) {
+    res.redirect('/user/login')
+  },
+
   // GET /user
-  showUserPage(req, res){
+  showUserProfile(req, res){
     res.render('user', { 
-      title: req.name,
+      title: 'User profile',
       name: req.name,
       login: req.login, 
       password: req.password 

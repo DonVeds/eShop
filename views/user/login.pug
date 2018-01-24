@@ -5,16 +5,17 @@ block header
   +header
 
 block content
-  form.m-2
-    .form-group
-      label(for='exampleInputEmail1') Email address
-      input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
-      small#emailHelp.form-text.text-muted We&apos;ll never share your email with anyone else.
-    .form-group
-      label(for='exampleInputPassword1') Password
-      input#exampleInputPassword1.form-control(type='password', placeholder='Password')
-    .form-check
-      input#exampleCheck1.form-check-input.ml-1(type='checkbox')
-      label.form-check-label(for='exampleCheck1') Check me out
-    button.btn.btn-primary(type='submit') Submit
-    a.btn.btn-primary.ml-2(href="/user/reg") Go to registration
+  .conteiner
+    .row
+      .col
+        form.m-2
+          .form-group
+            label(for='exampleInputEmail1') Email address
+            input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+            small#emailHelp.form-text.text-muted We'll never share your email with anyone else. Except Google. And Facebook. And Yahoo. And US Government, and Russian. Prety sure yours data is confidential.
+          .form-group
+            label(for='exampleInputPassword1') Password
+            input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+          button.btn.btn-primary(type='submit') Submit
+          a.btn.btn-primary.ml-2(href='/user/reg') Go to registration
+      .col

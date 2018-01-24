@@ -4,5 +4,37 @@ include ../_mixins/_header
 block header
   +header
 
-block content 
-  p Use some imagination - there is yors items for selling
+block content
+  .conteiner
+    .row
+      .col
+        form(method='post')
+          .form-group
+            label(for='InputVinylTitle') Vinyl title
+            input#InputVinylTitle.form-control(type='text', min='1', max='20', name='title', aria-describedby="titleHelp", placeholder='Enter title' required)
+            small#titleHelp.form-text.text-muted Write only title, not more then 20 symbols
+          .form-group
+            label(for='InputDesc') Desc
+            input#InputDesc.form-control(type='text', min='1', max='100', name='desc', aria-describedby="descHelp", placeholder='Enter desc' required)
+            small#descHelp.form-text.text-muted Write description of vinyl, up to 100 symbols
+          .form-group
+            label(for='InputQuantity') Quantity
+            input#InputQuantity.form-control(type='number', min='1', name='Quantity', aria-describedby="QuantityHelp", placeholder='Enter Quantity' value='1' required)
+            small#QuantityHelp.form-text.text-muted Write Quantity. 
+          .form-group
+            label(for='InputTopic') Topic
+            input#InputTopic.form-control(type='text', min='1', max='15', name='topic', aria-describedby="topicHelp", placeholder='Enter Topic' required)
+            small#topicHelp.form-text.text-muted Write topic, not more then 15 symbols
+          .form-group
+            label(for='InputVinylImg') Vinyl img link
+            input#InputVinylImg.form-control(type='text', min='1', max='20', name='Img', aria-describedby="ImgHelp", placeholder='Enter Img' required)
+            small#ImgHelp.form-text.text-muted Paste link to your img
+          .form-group
+            label(for='InputYear') Year
+            input#InputYear.form-control(type='number', min='1500', max='2018', name='year', aria-describedby="yearHelp", placeholder='Enter Year' required)
+            small#yearHelp.form-text.text-muted Write year. Only 4 symbols, not more - not less
+          .form-check
+            input.ml-0#exampleRadios1.form-check-input(type='radio', name='secondhand', value='true', checked)
+            label.form-check-label(for='exampleRadios1') Second Hand
+          button.btn.btn-primary(type='submit' raised) Submit
+      .col

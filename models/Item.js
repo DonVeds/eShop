@@ -9,7 +9,8 @@ const Item = new mongoose.Schema({
   'img': String,
   'top': Boolean,
   'year': Number,
-  'sale': Boolean
+  'sale': Boolean,
+  'secondhand': Boolean
 });
 
 module.exports = mongoose.model('Item', Item);

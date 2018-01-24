@@ -2,12 +2,12 @@ const express =require('express');
 const logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const favicon = require('serve-favicon');
 
 const db = require('./services/db');
 const config = require('./config');
 const router = require('./routers');
 const admin = require('./admin');
-const authMiddleware = require('./middleware/auth');
 
 const server = express();
 
@@ -23,6 +23,7 @@ server.locals = Object.assign(server.locals, config);
 server.use(express.static(config.paths.public));
 server.use('/lib', express.static(config.paths.lib));
 server.use(express.urlencoded({ extended: false }));
+server.use(favicon(config.paths.favicon));
 server.use(session({
   name: 'sessionId',
   secret: config.sessionSecret,
@@ -42,7 +43,6 @@ server.use(session({
 }));
 
 server.use(logger('dev'));
-server.use(authMiddleware);
 
 server.use('/', router.main);
 server.use('/user', router.user);

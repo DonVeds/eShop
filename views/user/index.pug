@@ -3,3 +3,23 @@ include ../_mixins/_header
 
 block header
   +header
+
+block content
+  .conteiner
+    .row
+      .col
+        img.img-thumbnail.w-1.h-1(src='https://i.pinimg.com/564x/c4/87/b4/c487b4871fe87c3114be4585619ce1bc.jpg', alt='profile pic')
+      .col-8
+        p User name
+        hr
+        .row
+          .col
+            p User's selling is a page where you can find what you are selling
+            a.btn.btn-primary(href='#') User's selling
+          .col
+            p User's cart is your cart. In fact you need buy all stuf in your cart cause you realy need it. Let's do it
+            a.btn.btn-primary(href='#') User's cart
+          .col
+            p User's wish list is some kind of mistake. Let's add all this stuf to your cart
+            a.m-1.btn.btn-primary(href='#') User's wishlist
+            a.m-1.btn.btn-primary(href='#') Add all stuf to cart

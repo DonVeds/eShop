@@ -2,12 +2,14 @@ const { Router } = require('express');
 const router = Router();
 
 const { sell: {
-  showSellingPage
+  showSellingPage,
+  addItemToSellingList
 } } = require('../controllers');
 
-// router.get('/', showSellingPage)
-// |||||
-// ERROR
+console.log(showSellingPage)
+router.route('/')
+  .get(showSellingPage)
+  .post(addItemToSellingList)
 
 module.exports = router;
 

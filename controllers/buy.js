@@ -1,5 +1,4 @@
 const { Item } = require('../models');
-const { ObjectId } = require('mongodb')
 
 module.exports = {
 
@@ -31,9 +30,6 @@ module.exports = {
         res.render('buy/topics', {
           items: items,
           title: 'Topics',
-          name: req.name,
-          login: req.login,
-          password: req.password,
           isTopic: true,
           topics: req.topics
         });
@@ -55,9 +51,6 @@ module.exports = {
         res.render('buy/topics', {
           items: itemsByTopic,
           title: topicTitle,
-          name: req.name,
-          login: req.login,
-          password: req.password,
           isTopic: true,
           topics: req.topics
         });
@@ -75,9 +68,6 @@ module.exports = {
         res.render('buy', {
           items: newItems,
           title: 'New',
-          name: req.name,
-          login: req.login,
-          password: req.password,
           isNew: true
         });
       });
@@ -91,9 +81,6 @@ module.exports = {
         res.render('buy', {
           items: items,
           title: 'Top',
-          name: req.name,
-          login: req.login,
-          password: req.password,
           isTop: true
         });
       });
@@ -107,11 +94,20 @@ module.exports = {
         res.render('buy', {
           items: items,
           title: 'Sale',
-          name: req.name,
-          login: req.login,
-          password: req.password,
           isSale: true,
         });
+      });
+  },
+
+  // GET /buy/secondhand
+  showSecondHand(req, res) {
+    Item.find({ secondhand: true })
+      .then(items => {
+        res.render('buy', {
+          items: items, 
+          title: 'Second Hand',
+          isSecondHand: true
+        })
       });
   },
 
@@ -130,9 +126,6 @@ module.exports = {
         res.render('buy', {
           items: req.item,
           title: req.item[0].title,
-          name: req.name,
-          login: req.login,
-          password: req.password,
         });
       });
   }

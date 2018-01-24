@@ -11,10 +11,10 @@ block header
 block content
   +nav
 
-  hr
+  hr.mt-2.mb-2
 
   .content(style="display: flex; flex-wrap: wrap;")
     for item in items
-      +item(item.title, item.img, item.desc, item.topic, item.year, item.top)
+      +item(item.title, item.img, item.desc, item.topic, item.year, item.top, item.quantity)
     
   
