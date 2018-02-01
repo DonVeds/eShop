@@ -1,0 +1,17 @@
+extends /_layout
+include /_mixins/_item
+include /_mixins/_adminItem
+
+block header 
+  h1 Delete #{item.title}
+
+block content
+
+
+  hr.mt-2.mb-2
+
+  form(action="", method="post")
+    h3 You sure you want to delete #{item.title}?
+    button.btn.btn-danger(type="submit") Delete
+
+    

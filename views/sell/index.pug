@@ -5,34 +5,35 @@ block header
   +header
 
 block content
+  style input:invalid:not(:placeholder-shown) {border-color: red;} input:valid:not(:placeholder-shown) {border-color: green;}
   .conteiner
     .row
       .col
-        form(method='post')
+        form(method='post').m-4
           .form-group
             label(for='InputVinylTitle') Vinyl title
-            input#InputVinylTitle.form-control(type='text', min='1', max='20', name='title', aria-describedby="titleHelp", placeholder='Enter title' required)
+            input#InputVinylTitle.form-control(type='text', minlength="1", maxlength="20", name='title', aria-describedby="titleHelp", placeholder='Enter title' required)
             small#titleHelp.form-text.text-muted Write only title, not more then 20 symbols
           .form-group
             label(for='InputDesc') Desc
-            input#InputDesc.form-control(type='text', min='1', max='100', name='desc', aria-describedby="descHelp", placeholder='Enter desc' required)
-            small#descHelp.form-text.text-muted Write description of vinyl, up to 100 symbols
+            input#InputDesc.form-control(type='text', minlength="1", maxlength="50", name='desc', aria-describedby="descHelp", placeholder='Enter desc' required)
+            small#descHelp.form-text.text-muted Write description of vinyl, up to 50 symbols
           .form-group
             label(for='InputQuantity') Quantity
-            input#InputQuantity.form-control(type='number', min='1', name='Quantity', aria-describedby="QuantityHelp", placeholder='Enter Quantity' value='1' required)
+            input#InputQuantity.form-control(type='number', min='1', name='quantity', aria-describedby="QuantityHelp", placeholder='Enter Quantity' value='1' required)
             small#QuantityHelp.form-text.text-muted Write Quantity. 
           .form-group
             label(for='InputTopic') Topic
-            input#InputTopic.form-control(type='text', min='1', max='15', name='topic', aria-describedby="topicHelp", placeholder='Enter Topic' required)
+            input#InputTopic.form-control(type='text', minlength="1" maxlength="15", name='topic', aria-describedby="topicHelp", placeholder='Enter Topic' required)
             small#topicHelp.form-text.text-muted Write topic, not more then 15 symbols
           .form-group
             label(for='InputVinylImg') Vinyl img link
-            input#InputVinylImg.form-control(type='text', min='1', max='20', name='Img', aria-describedby="ImgHelp", placeholder='Enter Img' required)
+            input#InputVinylImg.form-control(type='text', name='img', aria-describedby="ImgHelp", placeholder='Enter Img' required)
             small#ImgHelp.form-text.text-muted Paste link to your img
           .form-group
             label(for='InputYear') Year
             input#InputYear.form-control(type='number', min='1500', max='2018', name='year', aria-describedby="yearHelp", placeholder='Enter Year' required)
-            small#yearHelp.form-text.text-muted Write year. Only 4 symbols, not more - not less
+            small#yearHelp.form-text.text-muted Write year. Only 4 symbols, not more - not less. Since 1500 till 2018.
           .form-check
             input.ml-0#exampleRadios1.form-check-input(type='radio', name='secondhand', value='true', checked)
             label.form-check-label(for='exampleRadios1') Second Hand

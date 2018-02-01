@@ -1,0 +1,17 @@
+extends /_layout
+include /_mixins/_item
+include /_mixins/_adminItem
+
+block header 
+  h1 Admin items page
+
+block content
+
+
+  hr.mt-2.mb-2
+
+  .content(style="display: flex; flex-wrap: wrap;")
+    for item in items
+      a.m-5(href="/admin/items/" + item.title.toLowerCase().replace(' ', '') + '/update')
+        img(src=item.img, alt='Card image cap', style='width: 100px')
+        = item.title

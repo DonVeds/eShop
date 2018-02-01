@@ -7,10 +7,10 @@ const Item = new mongoose.Schema({
   'quantity': Number,
   'topic': String,
   'img': String,
-  'top': Boolean,
+  'top': { type: Boolean, default: 'false'},
   'year': Number,
-  'sale': Boolean,
-  'secondhand': Boolean
+  'sale': { type: Boolean, default: 'false' },
+  'secondhand': { type: Boolean, default: 'false' },
 });
 
 module.exports = mongoose.model('Item', Item);

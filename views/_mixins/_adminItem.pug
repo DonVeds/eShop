@@ -1,0 +1,39 @@
+mixin adminItem(id, title, imgSrc, desc, topic, year, top, quantity, sale, secondhand)
+  .card.m-2.bg-light(style='width: 20rem;')
+    img.card-img-top(src=imgSrc, alt='Card image cap', style='width: 100%')
+    .card-block
+      form(method="post")
+        input.form-control.form-control-sm(type='text', name='img', placeholder='Link to img', value=imgSrc)
+        hr
+        input.form-control.form-control-sm(type='text', placeholder='id', name='_id', value=id disabled)
+        input.form-control.form-control-sm(type='text', placeholder='Title', name='title', value=title)
+        textarea#exampleFormControlTextarea1.form-control(rows='3', placeholder='Description', name='desc')= desc
+        .card-body
+          input.form-control.form-control-sm(type='text', placeholder='Year', name='year', value=year)
+          input.form-control.form-control-sm(type='text', placeholder='Topic', name='topic', value=topic)
+          input.form-control.form-control-sm(type='text', placeholder='Quantity', name='quantity', value=quantity)
+          
+                        
+        .form-check
+          h4 Sale
+          input#saleTrue.form-check-input.ml-0(type='radio', name="sale", value='true', checked=sale)
+          label.form-check-label(for='saleCheck') true
+          input#saleFalse.form-check-input.ml-0(type='radio', name="sale", value='false')
+          label.form-check-label(for='saleFalse') false
+        hr
+        .form-check
+          h4 Top
+          input#topTrue.form-check-input.ml-0(type='radio', name="top", value='true', checked=top)
+          label.form-check-label(for='topTrue') true
+          input#topFalse.form-check-input.ml-0(type='radio', name="top", value='false')
+          label.form-check-label(for='topFalse') false
+        hr
+        .form-check
+          h4 Second hand
+          input#secondhandTrue.form-check-input.ml-0(type='radio', name='secondhand', value='true', checked=secondhand)
+          label.form-check-label(for='secondhandTrue') true
+          input#secondhandFalse.form-check-input.ml-0(type='radio', name='secondhand', value='false')
+          label.form-check-label(for='secondhandFalse') false
+        .card-footer
+          button(type="submit").btn.btn-warning.m-2 Update
+          a(href='/admin/items/' + item.title.toLowerCase().replace(' ', '') + '/delete').btn.btn-danger.m-2 Delete

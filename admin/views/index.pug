@@ -1,1 +1,15 @@
-extends _layout
+extends /_layout
+include /_mixins/_item
+include /_mixins/_adminItem
+
+block header
+  h1 Admin page
+  hr
+
+block content
+  .row.px-5
+    .col-5
+        a(href='/admin/items' style="width: 100%").btn.btn-primary Items 
+    .col-2
+    .col-5
+        a(href='/admin/users' style="width: 100%").btn.btn-info Users 

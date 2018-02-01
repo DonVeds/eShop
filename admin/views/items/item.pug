@@ -1,0 +1,16 @@
+extends /_layout
+include /_mixins/_adminItem
+
+block header 
+  h1= item.title
+
+block content
+
+
+  hr.mt-2.mb-2
+
+  .content
+    +adminItem(item._id, item.title, item.img, item.desc, item.topic, item.year, item.top, item.quantity, item.sale, item.secondhand)
+
+
+    
