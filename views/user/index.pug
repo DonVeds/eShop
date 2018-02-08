@@ -8,9 +8,13 @@ block content
   .conteiner
     .row
       .col
-        img.img-thumbnail.w-1.h-1(src='https://i.pinimg.com/564x/c4/87/b4/c487b4871fe87c3114be4585619ce1bc.jpg', alt='profile pic')
+        img.img-thumbnail.w-1.h-1(src=user.userImg, alt='profile pic')
       .col-8
-        p User name
+        .row
+          .col
+            p= user.email
+          .col
+            a(href='/user/logout').btn.btn-danger LOGOUT
         hr
         .row
           .col

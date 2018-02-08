@@ -8,14 +8,14 @@ block content
   .conteiner
     .row
       .col
-        form.m-2
+        form(method="post").m-2
           .form-group
             label(for='exampleInputEmail1') Email address
-            input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
-            small#emailHelp.form-text.text-muted We'll never share your email with anyone else. Except Google. And Facebook. And Yahoo. And US Government, and Russian. Prety sure yours data is confidential.
+            input#exampleInputEmail1.form-control(type='email', name='email', aria-describedby='emailHelp', placeholder='Enter email')
+            small#emailHelp.form-text.text-muted We'll never share your email with anyone else. Except Google. And Facebook. And Yahoo. And US Government, and Russians. Prety sure yours data is confidential.
           .form-group
             label(for='exampleInputPassword1') Password
-            input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+            input#exampleInputPassword1.form-control(type='password', name='password', placeholder='Password')
           button.btn.btn-primary(type='submit') Submit
           a.btn.btn-primary.ml-2(href='/user/login') Go to login page
       .col

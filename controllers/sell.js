@@ -9,7 +9,7 @@ module.exports = {
 
   addItemToSellingList(req, res, next) {
     Item.create(req.body)
-      .then(() => res.redirect('/buy/secondhand'))
+      .then(() => res.redirect('/user/profile'))
       .catch(next)
   }
 }

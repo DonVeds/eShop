@@ -1,18 +1,41 @@
 const { Router } = require('express');
 const router = Router();
+const {passport} = require('../services')
 
 const { user: {
   redirectUser,
   showUserProfile,
   showUserCart,
   showLoginPage,
-  showRegPage
+  showRegPage,
+  regUser,
+  logoutUser
 } } = require('../controllers')
 
-router.get('/', redirectUser);
-router.get('/profile', showUserProfile)
-router.get('/cart', showUserCart);
-router.get('/login', showLoginPage);
-router.get('/reg', showRegPage);
+router.route("/")
+  .get(redirectUser)
+router.route("/profile")
+  .get(showUserProfile)
+router.route("/cart")
+  .get(showUserCart)
+router.route("/login")
+  .get(showLoginPage)
+  .post(
+    passport.authenticate("local-login", {
+      failureRedirect: "/user/login",
+      successRedirect: '/user/profile'
+    })
+  );
+router.route("/reg")
+  .get(showRegPage)
+  .post(
+    passport.authenticate("local-reg", {
+      failureRedirect: "/user/reg",
+      successRedirect: '/user/profile'
+    })
+  )
+
+router.route('/logout')
+  .get(logoutUser)
 
 module.exports = router;

@@ -41,20 +41,21 @@ module.exports = {
 
   // GET /buy/topics/:topic
   showItemsByTopic(req, res) {
-    Item.find()
+    Item.find({ topic: req.params.topic })
       .then(items => {
+        console.log(items);
+        
+        // let itemsByTopic = items.filter(item => item.topic.toLowerCase().replace(" ", "") == req.params.topic);
 
-        let itemsByTopic = items.filter(item => item.topic.toLowerCase().replace(' ', '') == req.params.topic)
+        // let topicTitle = itemsByTopic[0].topic;
 
-        let topicTitle = itemsByTopic[0].topic
-
-        res.render('buy/topics', {
-          items: itemsByTopic,
-          title: topicTitle,
+        res.render("buy/topics", {
+          items: items,
+          title: items[0].topic,
           isTopic: true,
           topics: req.topics
         });
-      });
+    });
   },
 
 

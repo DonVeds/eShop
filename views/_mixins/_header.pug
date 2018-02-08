@@ -1,9 +1,9 @@
 mixin header
   header.row.pt-2
     .col
-      if name
+      if user
         p.text-center
-          a(href=`/user?login=${login}&password=${password}`).text-muted= `Hello ${name}`
+          a(href=`/user/profile`).text-muted= `Hello ${user.email}`
       else
         p.text-center
           a(href='/user/login') Login please
@@ -11,20 +11,16 @@ mixin header
       h4.text-center= title
     .col
       p.text-center
-        if login && password
-          a(href=`/user/cart?login=${login}&password=${password}`).text-muted Cart
-        else
           a(href='/user/cart').text-muted Cart
   hr.m-0
   .row.py-2
     .col
-      if login && password
-        a(href=`/?login=${login}&password=${password}`).text-muted
-          h5.text-center eShop
-      else
         a(href='/').text-muted
           h5.text-center eShop
     .col-7
-      input(type="search", name="").w-75
-      button search
+      form(action="")    
+        .input-group.mb-3
+          input.form-control(type='text', placeholder="Find some vinyl", aria-label="Recipient's username", aria-describedby='basic-addon2')
+          .input-group-append
+            button.btn.btn-primary(type='button') Search
   hr.m-0.pb-2

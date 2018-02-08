@@ -3,6 +3,8 @@ const config = require('../config');
 
 mongoose.Promise = global.Promise;
 
+mongoose.set('debug', true);
+
 mongoose.connect(config.mongodbUrl);
 
 mongoose.connection.on('error', () => console.error.bind(console, 'Mongoose error: '));

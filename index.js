@@ -4,7 +4,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const favicon = require('serve-favicon');
 
-const db = require('./services/db');
+const { db, passport } = require('./services');
 const config = require('./config');
 const router = require('./routers');
 const admin = require('./admin');
@@ -41,6 +41,16 @@ server.use(session({
     touchAfter: 60 * 60 * 24 // 1 day
   })
 }));
+
+server.use(passport.initialize())
+server.use(passport.session())
+
+server.use((req, res, next) => {
+  res.locals.user = req.user
+
+  next();
+});
+
 
 server.use(logger('dev'));
 
