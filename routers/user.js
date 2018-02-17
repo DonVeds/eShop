@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const router = Router();
-const {passport} = require('../services')
 
 const { user: {
   redirectUser,
@@ -8,34 +7,37 @@ const { user: {
   showUserCart,
   showLoginPage,
   showRegPage,
+  loginUser,
   regUser,
   logoutUser
 } } = require('../controllers')
 
+const auth = require('../middleware/auth')
+
 router.route("/")
+  .all(auth.allowAuthenticated)
   .get(redirectUser)
+
 router.route("/profile")
+  .all(auth.allowAuthenticated)
   .get(showUserProfile)
+
 router.route("/cart")
+  .all(auth.allowAuthenticated)
   .get(showUserCart)
+
 router.route("/login")
+  .all(auth.allowUnauthenticated)
   .get(showLoginPage)
-  .post(
-    passport.authenticate("local-login", {
-      failureRedirect: "/user/login",
-      successRedirect: '/user/profile'
-    })
-  );
+  .post(loginUser)
+
 router.route("/reg")
+  .all(auth.allowUnauthenticated)
   .get(showRegPage)
-  .post(
-    passport.authenticate("local-reg", {
-      failureRedirect: "/user/reg",
-      successRedirect: '/user/profile'
-    })
-  )
+  .post(regUser)
 
 router.route('/logout')
+  .all(auth.allowAuthenticated)
   .get(logoutUser)
 
 module.exports = router;

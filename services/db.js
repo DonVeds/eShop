@@ -8,7 +8,7 @@ mongoose.set('debug', true);
 mongoose.connect(config.mongodbUrl);
 
 mongoose.connection.on('error', () => console.error.bind(console, 'Mongoose error: '));
-mongoose.connection.on('open', () => console.log('Mongoose is workingn'));
+mongoose.connection.on('open', () => console.log('Mongoose is working'));
 mongoose.connection.on('disconnected', () => console.log('Mongoose disconnected'));
 
 process.on('SIGINT', () => {

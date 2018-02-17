@@ -1,12 +1,11 @@
-mixin item(title, imgSrc, desc, topic, year, top, quantity)
+mixin item(item) 
   .card.m-2.bg-light(style='width: 20rem;')
-    img.card-img-top(src=imgSrc, alt='Card image cap', style='width: 100%')
+    img.card-img-top(src=item.img, alt='Card image cap', style='width: 100%')
     .card-block
-      h4.card-title= title
-      p.card-text= desc
+      h4.card-title= item.title
+      p.card-text= item.desc
       .card-body
-        a(href='#').btn.btn-success.m-2 Buy
-        a(href='#').btn.btn-primary.m-2 Cart
-        a(href='#').btn.btn-warning.m-2 Wishlist
+        a(href=`/buy/${ item.title.toLowerCase().replace(' ', '') }/cart`).btn.btn-success.m-2 Cart
+        a(href=`/buy/${ item.title.toLowerCase().replace(' ', '') }/wishlist`).btn.btn-warning.m-2 Wishlist
       .card-footer
-        small.text-muted= `${year} || ${topic} || ${quantity}`
+        small.text-muted= `${item.year} || ${item.topic} || ${item.quantity}`

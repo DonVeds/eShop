@@ -48,9 +48,9 @@ server.use(passport.session())
 server.use((req, res, next) => {
   res.locals.user = req.user
 
+  
   next();
 });
-
 
 server.use(logger('dev'));
 

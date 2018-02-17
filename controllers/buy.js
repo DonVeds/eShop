@@ -1,8 +1,8 @@
-const { Item } = require('../models');
+const { Item, User } = require('../models');
 
 module.exports = {
 
-  findTopics(req, res, next){
+  findTopics(req, res, next) {
     Item.find()
       .then(items => {
         let topics = [];
@@ -15,6 +15,18 @@ module.exports = {
         next()
       })
       .catch(next)
+  },
+
+  findItem(req, res, next) {
+    Item.find()
+      .then(items => {
+        for (item of items) {
+          if (req.params.item.toLowerCase().replace(' ', '') === item.title.toLowerCase().replace(' ', '')) {
+            req.item = item;
+            next()
+          }
+        }
+      });
   },
 
   // GET /buy
@@ -34,7 +46,6 @@ module.exports = {
           topics: req.topics
         });
       });
-      
 
   },
 
@@ -43,7 +54,7 @@ module.exports = {
   showItemsByTopic(req, res) {
     Item.find({ topic: req.params.topic })
       .then(items => {
-        console.log(items);
+        // console.log(items);
         
         // let itemsByTopic = items.filter(item => item.topic.toLowerCase().replace(" ", "") == req.params.topic);
 
@@ -115,20 +126,46 @@ module.exports = {
 
   // GET /buy/:item
   showItem(req, res) {
-    Item.find()
-      .then(items => {
-        for (item of items) {
-          if (req.params.item.toLowerCase().replace(' ', '') === item.title.toLowerCase().replace(' ', '')) {
-            req.item = [item];
-            console.log(req.item)
-          }
-        }
+    res.render('buy', {
+      items: req.item,
+      title: req.item[0].title,
+    });
+  },
 
+  // GET /buy/:item/buy
+  buyItem(req, res) {
+    res.send('Use some imagination. You just bought this vinyl')
+  },
+
+  // GET /buy/:item/cart
+  addItemToCart(req, res) {
+    User.findOneAndUpdate(
+      {_id: req.user._id}, 
+      {$push: {cart: req.item._id} },
+      {safe: true, upsert: true },
+      function (err, model) {
+        console.log(err);
+      }
+    );
+    res.redirect(req.get('referer'));
+  },
+
+  // GET /buy/search
+  showSearch(req, res) {
+    let regexp = new RegExp(req.query.search, 'gi')
+    Item.find({ 
+      $or: [
+        {title: regexp},
+        {topic: regexp}
+      ]
+    })
+      .then(items => {
         res.render('buy', {
-          items: req.item,
-          title: req.item[0].title,
+          items: items,
+          title: 'Search',
+          query: req.query.search
         });
       });
-  }
+  },
 
 }

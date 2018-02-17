@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   version: '1.0.0',
-  port: process.env.port || 3000,
+  port: process.env.port || 5000,
   sessionSecret: '12345',
   paths: {
     views: path.resolve(__dirname, '..', 'views'),

@@ -10,32 +10,35 @@ const User = new mongoose.Schema({
     default:
       "https://i.pinimg.com/564x/c4/87/b4/c487b4871fe87c3114be4585619ce1bc.jpg"
   },
-  role: { type: String, default: "user" }
+  role: { type: String, default: "user" },
+  sellingItems: { type: Array, default: [] },
+  cart: { type: Array, default: [] },
+  wishlist: { type: Array, default: [] }
 });
 
-User.virtual("isAdmin").get(function() {
-  return this.role === "admin";
-});
+// User.virtual("isAdmin").get(function() {
+//   return this.role === "admin";
+// });
 
-User.pre("save", function(next) {
-  if (!this.isModified("password")) return next();
+// User.pre("save", function(next) {
+//   if (!this.isModified("password")) return next();
 
-  bcrypt
-    .hash(this.password, 10)
-    .then(hash => {
-      this.password = hash;
-      next();
-    })
-    .catch(next);
-});
+//   bcrypt
+//     .hash(this.password, 10)
+//     .then(hash => {
+//       this.password = hash;
+//       next();
+//     })
+//     .catch(next);
+// });
 
-User.post("save", function(error, user, next) {
-  if (error.name === "MongoError" && error.code === 11000) {
-    next(new Error("Имя пользователя или адрес электронной почты заняты."));
-  } else {
-    next(error);
-  }
-});
+// User.post("save", function(error, user, next) {
+//   if (error.name === "MongoError" && error.code === 11000) {
+//     next(new Error("Имя пользователя или адрес электронной почты заняты."));
+//   } else {
+//     next(error);
+//   }
+// });
 
 User.methods.isCorrectPassword = function(password) {
   return bcrypt.compare(password, this.password);

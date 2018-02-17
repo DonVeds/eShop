@@ -29,11 +29,9 @@ passport.use(
   new LocalStrategy(option, (email, password, done) => {
     User.findOne({ email })
       .then(user => {
-        console.log(user);
         if (!user) return done(null, false);
 
-        user
-          .isCorrectPassword(password)
+        user.isCorrectPassword(password)
           .then(isEqual => {
             if (!isEqual) return done(null, false);
 

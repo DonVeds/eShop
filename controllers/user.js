@@ -1,4 +1,5 @@
-const { User } = require("../models");
+const { Item } = require("../models");
+const { passport } = require('../services')
 
 module.exports = {
   // GET /user
@@ -18,12 +19,18 @@ module.exports = {
 
   // GET /user/cart
   showUserCart(req, res) {
-    res.render("user/cart", {
-      title: "Cart",
-      name: req.name,
-      login: req.login,
-      password: req.password
-    });
+    Item.find({ _id: req.user.cart })
+      .then(ids => {
+        Item.find({ _id: ids })
+          .then(items => {
+            // console.log(items);
+            
+            res.render('user/cart', {
+              title: 'Cart',
+              items: items
+            })
+          })
+      })
   },
 
   //GET /user/login
@@ -40,11 +47,15 @@ module.exports = {
     });
   },
 
-  regUser(req, res, next) {
-    User.create(req.body)
-      .then(() => res.redirect("/buy/secondhand"))
-      .catch(next);
-  },
+  loginUser: passport.authenticate("local-login", {
+    failureRedirect: "/user/login",
+    successRedirect: '/user/profile'
+  }),
+
+  regUser: passport.authenticate('local-reg', {
+    failureRedirect: '/auth/register',
+    successRedirect: '/user'
+  }),
 
   logoutUser(req, res, next) {
     if (req.session) {

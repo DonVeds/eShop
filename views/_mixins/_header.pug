@@ -12,15 +12,16 @@ mixin header
     .col
       p.text-center
           a(href='/user/cart').text-muted Cart
+          span.badge.badge-success= cartLenght
   hr.m-0
   .row.py-2
     .col
         a(href='/').text-muted
           h5.text-center eShop
     .col-7
-      form(action="")    
+      form(method='GET' action='/buy/search')    
         .input-group.mb-3
-          input.form-control(type='text', placeholder="Find some vinyl", aria-label="Recipient's username", aria-describedby='basic-addon2')
+          input.form-control(type='search', name='search' placeholder="Find some vinyl", value=query, aria-label="Recipient's username", aria-describedby='basic-addon2')
           .input-group-append
-            button.btn.btn-primary(type='button') Search
+            button.btn.btn-primary(type='submit') Search
   hr.m-0.pb-2
