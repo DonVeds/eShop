@@ -1,6 +1,4 @@
-const { Item } = require('../../models');
-
-
+const { Item } = require('../../shared/models');
 
 module.exports = {
   showIndexPage(req, res) {

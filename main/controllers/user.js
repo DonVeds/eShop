@@ -1,5 +1,5 @@
-const { Item } = require("../models");
-const { passport } = require('../services')
+const { Item } = require('../../shared/models');
+const { passport } = require('../../shared/services')
 
 module.exports = {
   // GET /user

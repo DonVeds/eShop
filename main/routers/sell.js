@@ -1,10 +1,10 @@
 const { Router } = require('express');
 const router = Router();
 
-const { sell: {
+const {
   showSellingPage,
   addItemToSellingList
-} } = require('../controllers');
+} = require('../controllers/sell');
 
 console.log(showSellingPage)
 router.route('/')

@@ -1,10 +1,10 @@
 extends ../_layout
-include ../_mixins/_header
+include /_mixins/_header
 
 block header
   +header
 
-block content 
+block content
   .conteiner
     .row
       .col
@@ -17,5 +17,5 @@ block content
             label(for='exampleInputPassword1') Password
             input#exampleInputPassword1.form-control(type='password', name='password', placeholder='Password')
           button.btn.btn-primary(type='submit') Submit
-          a.btn.btn-primary.ml-2(href='/user/login') Go to login page
+          a.btn.btn-primary.ml-2(href='/user/reg') Go to registration
       .col

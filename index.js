@@ -1,18 +1,19 @@
-const express =require('express');
+const express = require('express');
 const logger = require('morgan');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const favicon = require('serve-favicon');
 
-const { db, passport } = require('./services');
-const config = require('./config');
-const router = require('./routers');
+const { db, passport } = require('./shared/services');
+const config = require('./shared/config');
+
+const main = require('./main')
 const admin = require('./admin');
 
 const server = express();
 
 server.set('view engine', 'pug');
-server.set('views', config.paths.views);
+server.set('./shared/views', config.paths.views);
 server.set('config', config);
 
 server.locals.version = config.version;
@@ -54,10 +55,7 @@ server.use((req, res, next) => {
 
 server.use(logger('dev'));
 
-server.use('/', router.main);
-server.use('/user', router.user);
-server.use('/buy', router.buy);
-server.use('/sell', router.sell);
+server.use('/', main)
 server.use('/admin', admin)
 
 server.listen(config.port, () => console.log(`Server is working on localhost:${config.port}`));

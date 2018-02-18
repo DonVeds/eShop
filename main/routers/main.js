@@ -1,9 +1,9 @@
 const { Router } = require('express');
 const router = Router();
 
-const { main: {
+const  {
   showMainPage
-} } = require('../controllers')
+} = require('../controllers/main')
 
 
 router.get('/', showMainPage);

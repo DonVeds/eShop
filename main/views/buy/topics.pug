@@ -1,9 +1,8 @@
 extends ../_layout
-include ../_mixins/_header
-include ../_mixins/_item
-include ../_mixins/nav
-include ../_mixins/_topicCard
-
+include /_mixins/_header
+include /_mixins/_topicCard
+include /_mixins/_item
+include /_mixins/nav
 
 block header
   +header
@@ -11,10 +10,11 @@ block header
 block content
   +nav
 
-  hr.mt-2.mb-2
+  for topic in topics 
+    +topicCard(topic)
+
+  hr
 
   .content(style="display: flex; flex-wrap: wrap;")
     for item in items
       +item(item)
-    
-  

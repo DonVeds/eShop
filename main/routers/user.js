@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 
-const { user: {
+const  {
   redirectUser,
   showUserProfile,
   showUserCart,
@@ -10,7 +10,7 @@ const { user: {
   loginUser,
   regUser,
   logoutUser
-} } = require('../controllers')
+} = require('../controllers/user')
 
 const auth = require('../middleware/auth')
 

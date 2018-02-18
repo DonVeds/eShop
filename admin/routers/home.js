@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const { home: {
+const {
   showIndexPage
-} } = require('../controllers')
+} = require('../controllers/home')
 
 router.get('/', showIndexPage);
 

@@ -1,13 +1,13 @@
 const router = require('express').Router();
 
-const { items: {
+const {
   showItemsPage,
   showItem,
   updateItem,
   findItem,
   showDeletePage,
   deleteItem
-} } = require('../controllers')
+} = require('../controllers/items')
 
 router.param('item', findItem);
 

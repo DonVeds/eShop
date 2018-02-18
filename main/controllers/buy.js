@@ -1,4 +1,4 @@
-const { Item, User } = require('../models');
+const { Item, User } = require('../../shared/models');
 
 module.exports = {
 
