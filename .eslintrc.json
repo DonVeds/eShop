@@ -11,8 +11,10 @@
         },
         "sourceType": "module"
     },
-    "extends": "airbnb",
+    "extends": "eslint:recommended",
     "rules": {
+        "no-extra-boolean-cast": "off",
+        "no-console": "off",
         "no-const-assign": "warn",
         "no-this-before-super": "warn",
         "no-undef": "warn",

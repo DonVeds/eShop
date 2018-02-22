@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 const User = new mongoose.Schema({
   name: String,
@@ -8,11 +8,10 @@ const User = new mongoose.Schema({
   userImg: {
     type: String,
     default:
-      "https://i.pinimg.com/564x/c4/87/b4/c487b4871fe87c3114be4585619ce1bc.jpg"
+      'https://i.pinimg.com/564x/c4/87/b4/c487b4871fe87c3114be4585619ce1bc.jpg'
   },
-  role: { type: String, default: "user" },
+  role: { type: String, default: 'user' },
   sellingItems: { type: Array, default: [] },
-  cart: { type: Array, default: [] },
   wishlist: { type: Array, default: [] }
 });
 

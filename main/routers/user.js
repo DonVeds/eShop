@@ -1,43 +1,47 @@
-const { Router } = require('express');
-const router = Router();
+const router = require('express').Router();
 
 const  {
   redirectUser,
   showUserProfile,
   showUserCart,
+  showUserWishlist,
   showLoginPage,
   showRegPage,
   loginUser,
   regUser,
   logoutUser
-} = require('../controllers/user')
+} = require('../controllers/user');
 
-const auth = require('../middleware/auth')
+const auth = require('../middleware/auth');
 
-router.route("/")
+router.route('/')
   .all(auth.allowAuthenticated)
-  .get(redirectUser)
+  .get(redirectUser);
 
-router.route("/profile")
+router.route('/profile')
   .all(auth.allowAuthenticated)
-  .get(showUserProfile)
+  .get(showUserProfile);
 
-router.route("/cart")
+router.route('/cart')
   .all(auth.allowAuthenticated)
-  .get(showUserCart)
+  .get(showUserCart);
 
-router.route("/login")
+router.route('/wishlist')
+  .all(auth.allowAuthenticated)
+  .get(showUserWishlist);
+
+router.route('/login')
   .all(auth.allowUnauthenticated)
   .get(showLoginPage)
-  .post(loginUser)
+  .post(loginUser);
 
-router.route("/reg")
+router.route('/reg')
   .all(auth.allowUnauthenticated)
   .get(showRegPage)
-  .post(regUser)
+  .post(regUser);
 
 router.route('/logout')
   .all(auth.allowAuthenticated)
-  .get(logoutUser)
+  .get(logoutUser);
 
 module.exports = router;

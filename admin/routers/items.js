@@ -7,19 +7,19 @@ const {
   findItem,
   showDeletePage,
   deleteItem
-} = require('../controllers/items')
+} = require('../controllers/items');
 
 router.param('item', findItem);
 
 router.route('/')
-  .get(showItemsPage)
+  .get(showItemsPage);
 
 router.route('/:item/update')
   .get(showItem)
-  .post(updateItem)
+  .post(updateItem);
 
 router.route('/:item/delete')
   .get(showDeletePage)
-  .post(deleteItem)
+  .post(deleteItem);
 
 module.exports = router;

@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 const {
   showIndexPage
-} = require('../controllers/home')
+} = require('../controllers/home');
 
 router.get('/', showIndexPage);
 

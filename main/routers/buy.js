@@ -14,10 +14,13 @@ const {
   showItem,
   buyItem,
   addItemToCart,
+  addItemToWishlist,
+  removeFromCart,
+  removeFromWishlist,
   showSearch
 } = require('../controllers/buy');
 
-router.param('item', findItem)
+router.param('item', findItem);
 
 router.get('/', redirectTopics);
 router.get('/topics', findTopics, showTopics);
@@ -27,8 +30,11 @@ router.get('/top', showTop);
 router.get('/sale', showSale);
 router.get('/secondhand', showSecondHand);
 router.get('/search', showSearch);
+router.post('/item/cart', addItemToCart);
+router.post('/item/wishlist', addItemToWishlist);
+router.post('/item/remove-from-cart', removeFromCart);
+router.post('/item/remove-from-wishlist', removeFromWishlist);
 router.get('/:item', showItem);
 router.get('/:item/buy', buyItem);
-router.get('/:item/cart', addItemToCart);
 
 module.exports = router;

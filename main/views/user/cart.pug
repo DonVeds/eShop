@@ -7,5 +7,11 @@ block header
 
 block content
   .content(style="display: flex; flex-wrap: wrap;")
-    for item in items
-      +item(item)
+    if cart
+      for item in items
+        for Obj in cartObj
+          if (Obj.id == item._id) 
+            +item(item, Obj.qua)
+    if wishlist 
+      for item in items
+        +item(item)

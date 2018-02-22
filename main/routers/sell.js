@@ -6,10 +6,9 @@ const {
   addItemToSellingList
 } = require('../controllers/sell');
 
-console.log(showSellingPage)
 router.route('/')
   .get(showSellingPage)
-  .post(addItemToSellingList)
+  .post(addItemToSellingList);
 
 module.exports = router;
 

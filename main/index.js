@@ -19,6 +19,7 @@ main.use((req, res, next) => {
   next();
 });
 
+
 main.use('/', router.main);
 main.use('/user', router.user);
 main.use('/buy', router.buy);

@@ -7,8 +7,10 @@ const favicon = require('serve-favicon');
 const { db, passport } = require('./shared/services');
 const config = require('./shared/config');
 
-const main = require('./main')
+const main = require('./main');
 const admin = require('./admin');
+
+const flash = require('./shared/middleware/flash');
 
 const server = express();
 
@@ -43,11 +45,12 @@ server.use(session({
   })
 }));
 
-server.use(passport.initialize())
-server.use(passport.session())
+server.use(passport.initialize());
+server.use(passport.session());
+server.use(flash());
 
 server.use((req, res, next) => {
-  res.locals.user = req.user
+  res.locals.user = req.user;
 
   
   next();
@@ -55,7 +58,7 @@ server.use((req, res, next) => {
 
 server.use(logger('dev'));
 
-server.use('/', main)
-server.use('/admin', admin)
+server.use('/', main);
+server.use('/admin', admin);
 
 server.listen(config.port, () => console.log(`Server is working on localhost:${config.port}`));

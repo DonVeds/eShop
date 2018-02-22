@@ -8,3 +8,6 @@ ___
   1. git clone https://github.com/DonVeds/eShop.git
   2. npm i
   3. npm start
+
+Email: user@email.com
+Password: 12345

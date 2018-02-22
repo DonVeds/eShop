@@ -1,11 +1,27 @@
-mixin item(item) 
+mixin item(item, qua) 
   .card.m-2.bg-light(style='width: 20rem;')
     img.card-img-top(src=item.img, alt='Card image cap', style='width: 100%; height: 238.5px; object-fit: cover')
     .card-block
       h4.card-title= item.title
       p.card-text= item.desc
-      .card-body
-        a(href=`/buy/${ item.title.toLowerCase().replace(' ', '') }/cart`).btn.btn-success.m-2 Cart
-        a(href=`/buy/${ item.title.toLowerCase().replace(' ', '') }/wishlist`).btn.btn-warning.m-2 Wishlist
+      .card-body.d-flex
+        if cart
+          form(action="/buy/item/remove-from-cart", method="post")
+            input(type="hidden", name="productId", value=item._id)
+            button(type="submit").btn.btn-danger.m-2 Remove from cart
+              span.badge.badge-light= qua
+        else
+          form(action="/buy/item/cart", method="post")
+            input(type="hidden", name="productId", value=item._id)
+            button(type="submit").btn.btn-success.m-2 Cart
+
+        if wishlist
+          form(action="/buy/item/remove-from-wishlist", method="post")
+            input(type="hidden", name="productId", value=item._id)
+            button(type="submit").btn.btn-warning.m-2 Remove from Wishlist
+        else
+          form(action="/buy/item/wishlist", method="post")
+            input(type="hidden", name="productId", value=item._id)
+            button(type="submit").btn.btn-warning.m-2 Wishlist
       .card-footer
         small.text-muted= `${item.year} || ${item.topic} || ${item.quantity}`
