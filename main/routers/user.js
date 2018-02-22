@@ -4,7 +4,9 @@ const  {
   redirectUser,
   showUserProfile,
   showUserCart,
+  removeFromCart,
   showUserWishlist,
+  removeFromWishlist,
   showLoginPage,
   showRegPage,
   loginUser,
@@ -26,9 +28,13 @@ router.route('/cart')
   .all(auth.allowAuthenticated)
   .get(showUserCart);
 
+router.post('/item/remove-from-cart', removeFromCart);
+
 router.route('/wishlist')
   .all(auth.allowAuthenticated)
   .get(showUserWishlist);
+
+router.post('/item/remove-from-wishlist', removeFromWishlist);
 
 router.route('/login')
   .all(auth.allowUnauthenticated)

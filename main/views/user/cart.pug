@@ -6,12 +6,15 @@ block header
   +header
 
 block content
-  .content(style="display: flex; flex-wrap: wrap;")
-    if cart
-      for item in items
-        for Obj in cartObj
-          if (Obj.id == item._id) 
-            +item(item, Obj.qua)
-    if wishlist 
-      for item in items
-        +item(item)
+  if message 
+    h2= message
+  else
+    .content(style="display: flex; flex-wrap: wrap;")
+      if cart
+        for item in items
+          for Obj in cartObj
+            if (Obj.id == item._id) 
+              +item(item, Obj.qua)
+      if wishlist 
+        for item in items
+          +item(item)

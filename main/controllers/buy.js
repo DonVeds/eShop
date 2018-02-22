@@ -164,26 +164,6 @@ module.exports = {
 
   },
 
-  // POST /buy/item/remove-from-cart
-  removeFromCart(req, res) {
-
-    for (let object of req.session.cart) {
-      
-      if (object.id == req.body.productId && object.qua > 1) {
-        
-        let objIndex = req.session.cart.findIndex((obj => obj.id == req.body.productId));
-
-        req.session.cart[objIndex].qua = req.session.cart[objIndex].qua - 1;
-
-
-        res.redirect('/user/cart');
-      } else if (object.id == req.body.productId && object.qua == 1) {
-        req.session.cart = req.session.cart.filter(obj => obj.id !== req.body.productId);
-        res.redirect('/user/cart');
-      }
-    }
-  },
-
   // POST /buy/item/wishlist
   addItemToWishlist(req, res, next) {
     User.findOneAndUpdate(
@@ -195,19 +175,6 @@ module.exports = {
       }
     );
     req.flash('wishlist');
-    res.redirect('back');
-  },
-
-  // POST /buy/item/remove-from-wishlist
-  removeFromWishlist(req, res, next) {
-    User.findOneAndUpdate(
-      { _id: req.user._id },
-      { $pull: { wishlist: req.body.productId } },
-      { safe: true, upsert: true },
-      function() {
-        next();
-      }
-    );
     res.redirect('back');
   },
 

@@ -1,4 +1,4 @@
-const { Item } = require('../../shared/models');
+const { Item, User } = require('../../shared/models');
 const { passport } = require('../../shared/services');
 
 module.exports = {
@@ -19,15 +19,27 @@ module.exports = {
 
   // GET /user/cart
   showUserCart(req, res, next) {
-    Item.find({ _id: { $in: req.session.cart.map((obj) => {
-      let cart = [];
-      cart.push(obj.id);
-      return cart;
-    })}})
+    
+    if (!req.session.cart || req.session.cart.length == 0) {
+      
+      res.render('user/cart', {
+        title: 'Cart',
+        message: 'Your cart is empty',
+        cart: true
+      });
+    }
+    Item.find({
+      _id: {
+        $in: req.session.cart.map(obj => {
+          let cart = [];
+          cart.push(obj.id);
+          return cart;
+        })
+      }
+    })
       .then(items => {
         res.locals.cartObj = req.session.cart;
-        console.log(res.locals.cartObj);
-        
+
         res.render('user/cart', {
           title: 'Cart',
           items: items,
@@ -37,19 +49,60 @@ module.exports = {
       .catch(next);
   },
 
+  // POST /user/item/remove-from-cart
+  removeFromCart(req, res) {
+    for (let object of req.session.cart) {
+      if (object.id == req.body.productId && object.qua > 1) {
+        let objIndex = req.session.cart.findIndex(
+          obj => obj.id == req.body.productId
+        );
+
+        req.session.cart[objIndex].qua = req.session.cart[objIndex].qua - 1;
+
+        res.redirect('/user/cart');
+      } else if (object.id == req.body.productId && object.qua == 1) {
+        req.session.cart = req.session.cart.filter(
+          obj => obj.id !== req.body.productId
+        );
+        res.redirect('/user/cart');
+      }
+    }
+  },
+
   // GET /user/wishlist
   showUserWishlist(req, res, next) {
     Item.find({ _id: { $in: req.user.wishlist } })
       .then(items => {
-        // console.log(items);
-
-        res.render('user/cart', {
-          title: 'WishList',
-          items: items,
-          wishlist: true
-        });
+        
+        if (items.length == 0) {
+          res.render('user/cart', {
+            title: 'WishList',
+            items: items,
+            wishlist: true,
+            message: 'Your wishlist is empty'
+          });
+        } else {
+          res.render('user/cart', {
+            title: 'WishList',
+            items: items,
+            wishlist: true,
+          });
+        }
       })
       .catch(next);
+  },
+
+  // POST /user/item/remove-from-wishlist
+  removeFromWishlist(req, res, next) {
+    User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $pull: { wishlist: req.body.productId } },
+      { safe: true, upsert: true },
+      function() {
+        next();
+      }
+    );
+    res.redirect('back');
   },
 
   //GET /user/login

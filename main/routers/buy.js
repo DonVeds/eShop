@@ -15,8 +15,6 @@ const {
   buyItem,
   addItemToCart,
   addItemToWishlist,
-  removeFromCart,
-  removeFromWishlist,
   showSearch
 } = require('../controllers/buy');
 
@@ -32,8 +30,6 @@ router.get('/secondhand', showSecondHand);
 router.get('/search', showSearch);
 router.post('/item/cart', addItemToCart);
 router.post('/item/wishlist', addItemToWishlist);
-router.post('/item/remove-from-cart', removeFromCart);
-router.post('/item/remove-from-wishlist', removeFromWishlist);
 router.get('/:item', showItem);
 router.get('/:item/buy', buyItem);
 

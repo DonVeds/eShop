@@ -6,17 +6,17 @@ mixin item(item, qua)
       p.card-text= item.desc
       .card-body.d-flex
         if cart
-          form(action="/buy/item/remove-from-cart", method="post")
+          form(action="/user/item/remove-from-cart", method="post")
             input(type="hidden", name="productId", value=item._id)
-            button(type="submit").btn.btn-danger.m-2 Remove from cart
-              span.badge.badge-light= qua
+            button(type="submit").btn.btn-danger.m-2 Remove from cart 
+              span.badge.badge-warning= qua
         else
           form(action="/buy/item/cart", method="post")
             input(type="hidden", name="productId", value=item._id)
             button(type="submit").btn.btn-success.m-2 Cart
 
         if wishlist
-          form(action="/buy/item/remove-from-wishlist", method="post")
+          form(action="/user/item/remove-from-wishlist", method="post")
             input(type="hidden", name="productId", value=item._id)
             button(type="submit").btn.btn-warning.m-2 Remove from Wishlist
         else
